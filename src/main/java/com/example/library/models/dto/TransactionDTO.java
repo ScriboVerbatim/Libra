@@ -1,20 +1,19 @@
 package com.example.library.models.dto;
 
 import com.example.library.models.Transaction;
-import org.springframework.lang.NonNull;
+
 
 import java.sql.Timestamp;
 
 public class TransactionDTO {
 
-    @NonNull
     private Timestamp issueDate;
 
     private Timestamp returnDate;
 
     private float fine;
 
-    private boolean goodReturnCondition;
+    private Boolean goodReturnCondition;
 
     private String remarks;
 
@@ -35,12 +34,12 @@ public class TransactionDTO {
         this.bookId = transaction.getBookUnit().getId();
     }
 
-    @NonNull
+
     public Timestamp getIssueDate() {
         return issueDate;
     }
 
-    public void setIssueDate(@NonNull Timestamp issueDate) {
+    public void setIssueDate(Timestamp issueDate) {
         this.issueDate = issueDate;
     }
 
@@ -58,14 +57,6 @@ public class TransactionDTO {
 
     public void setFine(float fine) {
         this.fine = fine;
-    }
-
-    public boolean isGoodReturnCondition() {
-        return goodReturnCondition;
-    }
-
-    public void setGoodReturnCondition(boolean goodReturnCondition) {
-        this.goodReturnCondition = goodReturnCondition;
     }
 
     public String getRemarks() {
@@ -90,5 +81,13 @@ public class TransactionDTO {
 
     public void setBookId(int bookId) {
         this.bookId = bookId;
+    }
+
+    public Boolean isGoodReturnCondition() {
+        return goodReturnCondition;
+    }
+
+    public void setGoodReturnCondition(Boolean goodReturnCondition) {
+        this.goodReturnCondition = goodReturnCondition;
     }
 }

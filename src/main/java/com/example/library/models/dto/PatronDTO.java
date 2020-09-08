@@ -1,6 +1,10 @@
 package com.example.library.models.dto;
 
 import com.example.library.models.Patron;
+import com.example.library.models.Transaction;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PatronDTO {
     private int id;
@@ -8,6 +12,7 @@ public class PatronDTO {
     private String username;
     private String emailId;
     private String phoneNo;
+    private List<Integer> transactions = new ArrayList<>();
 
     public PatronDTO(Patron patron) {
         this.id = patron.getId();
@@ -15,6 +20,17 @@ public class PatronDTO {
         this.username = patron.getUsername();
         this.emailId = patron.getEmailId();
         this.phoneNo = patron.getPhoneNo();
+        for(Transaction transaction:patron.getTransactionHistory())
+            this.transactions.add(transaction.getId());
+    }
+
+
+    public List<Integer> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Integer> transactions) {
+        this.transactions = transactions;
     }
 
     public int getId() {

@@ -4,6 +4,7 @@ import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,12 @@ public class BookUnit {
     private boolean borrowed;
 
     private String state;
+
+    private boolean removed;
+
+    private Timestamp dateOfAddition;
+
+    private Timestamp dateOfRemoval;
 
     @ManyToOne
     @JoinColumn(name = "isbn")
@@ -33,6 +40,31 @@ public class BookUnit {
         this.borrowed = borrowed;
         this.state = state;
         this.bookType = bookType;
+        //set dateOfAddition
+    }
+
+    public Timestamp getDateOfAddition() {
+        return dateOfAddition;
+    }
+
+    public void setDateOfAddition(Timestamp dateOfAddition) {
+        this.dateOfAddition = dateOfAddition;
+    }
+
+    public Timestamp getDateOfRemoval() {
+        return dateOfRemoval;
+    }
+
+    public void setDateOfRemoval(Timestamp dateOfRemoval) {
+        this.dateOfRemoval = dateOfRemoval;
+    }
+
+    public boolean isRemoved() {
+        return removed;
+    }
+
+    public void setRemoved(boolean removed) {
+        this.removed = removed;
     }
 
     public int getId() {

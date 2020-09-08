@@ -1,5 +1,7 @@
 package com.example.library.models;
 
+import com.example.library.models.dto.IssueDTO;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -15,23 +17,37 @@ public class Transaction {
 
     private float fine;
 
-    private boolean goodReturnCondition;
+    private Boolean goodReturnCondition;
 
     private String remarks;
 
     @ManyToOne
-    @JoinColumn(name="patronId")
+    //@JoinColumn(name="patronId")
     private Patron patron;
 
     @ManyToOne
     @JoinColumn(name="bookId")
     private BookUnit bookUnit;
 
-    public boolean isGoodReturnCondition() {
+    public Transaction() {
+    }
+
+    public Transaction(int id, Timestamp issueDate, Timestamp returnDate, float fine, Boolean goodReturnCondition, String remarks, Patron patron, BookUnit bookUnit) {
+        this.id = id;
+        this.issueDate = issueDate;
+        this.returnDate = returnDate;
+        this.fine = fine;
+        this.goodReturnCondition = goodReturnCondition;
+        this.remarks = remarks;
+        this.patron = patron;
+        this.bookUnit = bookUnit;
+    }
+
+    public Boolean isGoodReturnCondition() {
         return goodReturnCondition;
     }
 
-    public void setGoodReturnCondition(boolean goodReturnCondition) {
+    public void setGoodReturnCondition(Boolean goodReturnCondition) {
         this.goodReturnCondition = goodReturnCondition;
     }
 

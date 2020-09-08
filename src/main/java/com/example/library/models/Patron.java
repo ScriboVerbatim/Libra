@@ -1,6 +1,7 @@
 package com.example.library.models;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,10 +16,32 @@ public class Patron {
     private String password;
     private String emailId;
     private String phoneNo;
+    private boolean removed;
+    private Timestamp dateOfJoin;
+    private Timestamp dateOfExit;
 
     @OneToMany(mappedBy = "patron")
     private List<Transaction> transactionHistory =new ArrayList<>();
 
+    public Patron() { }
+
+    public Patron(int id, String name, String username, String password, String emailId, String phoneNo) {
+        this.id = id;
+        this.name = name;
+        this.username = username;
+        this.password = password;
+        this.emailId = emailId;
+        this.phoneNo = phoneNo;
+        //this.dateOfJoin = current date
+    }
+
+    public boolean isRemoved() {
+        return removed;
+    }
+
+    public void setRemoved(boolean removed) {
+        this.removed = removed;
+    }
 
     public String getEmailId() {
         return emailId;
@@ -36,16 +59,23 @@ public class Patron {
         this.phoneNo = phoneNo;
     }
 
-    public Patron() { }
-
-    public Patron(int id, String name, String username, String password, String emailId, String phoneNo) {
-        this.id = id;
-        this.name = name;
-        this.username = username;
-        this.password = password;
-        this.emailId = emailId;
-        this.phoneNo = phoneNo;
+    public Timestamp getDateOfJoin() {
+        return dateOfJoin;
     }
+
+    public void setDateOfJoin(Timestamp dateOfJoin) {
+        this.dateOfJoin = dateOfJoin;
+    }
+
+    public Timestamp getDateOfExit() {
+        return dateOfExit;
+    }
+
+    public void setDateOfExit(Timestamp dateOfExit) {
+        this.dateOfExit = dateOfExit;
+    }
+
+
 
     public int getId() {
         return id;

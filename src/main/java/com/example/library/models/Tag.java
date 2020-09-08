@@ -15,9 +15,8 @@ public class Tag {
     public Tag() {
     }
 
-    public Tag(String tagName, List<BookType> bookTypes) {
+    public Tag(String tagName) {
         this.tagName = tagName;
-        this.bookTypes = bookTypes;
     }
 
 
